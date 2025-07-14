@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+# MisPelis - Aplicación de Gestión de Películas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una aplicación web completa desarrollada en React para gestionar una colección de películas con funcionalidades administrativas y vista pública.
 
-## Available Scripts
+## 🚀 Características Principales
 
-In the project directory, you can run:
+### ✅ Criterio 4: Uso Correcto de React Router
 
-### `npm start`
+La aplicación implementa **React Router DOM v7.6.3** con las siguientes características:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 🛣️ Sistema de Rutas Implementado
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **`/`** - Página de inicio (administración de películas)
+- **`/categoria/:categoria`** - Películas filtradas por categoría con parámetros dinámicos
+- **`/peliculas`** - Vista pública de películas con sistema de votación
+- **`/blog`** - Blog de películas
+- **`/contacto`** - Formulario de contacto funcional
+- **`/*`** - Página 404 para rutas no encontradas
 
-### `npm test`
+#### 🔧 Funcionalidades de Enrutamiento
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **BrowserRouter**: Configuración principal del enrutamiento
+2. **Routes y Route**: Definición de rutas con componentes asociados
+3. **useParams**: Extracción de parámetros de URL (categorías)
+4. **Link**: Navegación declarativa sin recargas de página
+5. **Navegación programática**: Redirecciones y navegación condicional
 
-### `npm run build`
+#### 🏗️ Arquitectura de Componentes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── App.js                 # Router principal y configuración de rutas
+├── components/           # Componentes reutilizables
+│   ├── Navbar.js         # Navegación con Links de React Router
+│   ├── Listado.js        # Lista de películas
+│   ├── Crear.js          # Formulario de creación
+│   ├── Buscador.js       # Componente de búsqueda
+│   └── VistaPublica.js   # Vista pública con votación
+└── pages/               # Páginas principales (rutas)
+    ├── Inicio.js         # Página de administración
+    ├── Categoria.js      # Página de categorías (usa useParams)
+    ├── Peliculas.js      # Vista pública
+    ├── Blog.js           # Blog de películas
+    ├── Contacto.js       # Formulario de contacto
+    └── NoEncontrada.js   # Página 404
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎯 Otras Funcionalidades
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📊 Gestión de Datos
+- **localStorage**: Persistencia de datos local
+- **Estado global**: Manejo de estado con hooks de React
+- **CRUD completo**: Crear, leer, actualizar y eliminar películas
 
-### `npm run eject`
+### 🎨 Interfaz de Usuario
+- **Diseño responsivo**: Adaptable a móviles y tablets
+- **SweetAlert2**: Alertas y confirmaciones elegantes
+- **CSS Grid y Flexbox**: Layout moderno y flexible
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🖼️ Gestión de Imágenes
+- **Subida de archivos**: Conversión a base64 para almacenamiento
+- **Previsualización**: Vista previa de imágenes
+- **Gestión de memoria**: Límite de 5MB por imagen
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🔍 Búsqueda y Filtrado
+- **Búsqueda en tiempo real**: Filtrado instantáneo
+- **Filtros por categoría**: 8 categorías predefinidas
+- **Navegación por categorías**: URLs dinámicas con parámetros
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 👥 Sistema de Votación
+- **Like/Dislike**: Sistema de votación público
+- **Prevención de spam**: Un voto por usuario por película
+- **Cambio de voto**: Posibilidad de cambiar la votación
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Instalación y Uso
 
-## Learn More
+```bash
+# Clonar el repositorio
+git clone [url-del-repositorio]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Instalar dependencias
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Iniciar la aplicación
+npm start
 
-### Code Splitting
+# La aplicación estará disponible en http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📦 Dependencias Principales
 
-### Analyzing the Bundle Size
+```json
+{
+  "react": "^19.1.0",
+  "react-dom": "^19.1.0",
+  "react-router-dom": "^7.6.3",
+  "sweetalert2": "^11.22.2",
+  "sweetalert2-react-content": "^5.1.0"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🌐 Navegación
 
-### Making a Progressive Web App
+### Barra de Navegación
+- **Inicio**: Administración de películas (CRUD)
+- **Categorías**: Dropdown con 8 categorías
+  - Acción, Comedia, Drama, Terror
+  - Ciencia Ficción, Romance, Animación, Documental
+- **Películas**: Vista pública con votación
+- **Blog**: Artículos sobre películas
+- **Contacto**: Formulario funcional
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### URLs Dinámicas
+- `/categoria/Acción` - Películas de acción
+- `/categoria/Comedia` - Películas de comedia
+- `/categoria/Drama` - Películas de drama
+- etc.
 
-### Advanced Configuration
+## 🎨 Características de UI/UX
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Responsive Design**: Funciona en todos los dispositivos
+- **Hover Effects**: Efectos interactivos en botones y cards
+- **Loading States**: Feedback visual durante operaciones
+- **Error Handling**: Manejo elegante de errores
+- **Confirmaciones**: Diálogos de confirmación para acciones críticas
 
-### Deployment
+## 🔧 Estructura Técnica
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Hooks Utilizados
+- `useState`: Manejo de estado local
+- `useEffect`: Efectos secundarios y ciclo de vida
+- `useParams`: Extracción de parámetros de URL
 
-### `npm run build` fails to minify
+### Patrones de Diseño
+- **Component Composition**: Componentes reutilizables
+- **Props Drilling**: Paso de datos entre componentes
+- **Controlled Components**: Formularios controlados
+- **Conditional Rendering**: Renderizado condicional
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📱 Responsividad
+
+La aplicación está optimizada para:
+- **Desktop**: Layout completo con sidebar
+- **Tablet**: Layout adaptado sin pérdida de funcionalidad
+- **Mobile**: Layout apilado y navegación optimizada
+
+---
+
+**Desarrollado con React 19 y React Router DOM 7** 🚀
